@@ -1,0 +1,240 @@
+export type ProductCategory =
+  | 'training-gear'
+  | 'hunting-equipment'
+  | 'dog-supplies'
+  | 'accessories'
+  | 'books-dvds'
+
+export type TrainingLevel = 'puppy' | 'started' | 'finished' | 'professional'
+export type HuntingScenario = 'waterfowl' | 'upland' | 'dove' | 'duck' | 'pheasant' | 'general'
+export type DogBreed = 'labs' | 'goldens' | 'chesapeakes' | 'springers' | 'setters' | 'pointers' | 'all-breeds'
+export type SeasonalRelevance = 'duck-season' | 'pheasant-season' | 'dove-season' | 'year-round' | 'training-season'
+
+export interface TrustSignal {
+  yogiApproved?: boolean
+  proRecommended?: boolean
+  fieldTested?: boolean
+  customerStories?: number
+}
+
+export interface Product {
+  id: string
+  name: string
+  description: string
+  price: number
+  originalPrice?: number
+  imageUrl: string
+  amazonUrl: string
+  category: ProductCategory
+  tags: string[]
+  featured?: boolean
+  inStock?: boolean
+  rating?: number
+  reviewCount?: number
+
+  // Enhanced Phase 1 Features
+  trustSignals: TrustSignal
+  trainingLevel: TrainingLevel[]
+  huntingScenarios: HuntingScenario[]
+  breedRecommendations: DogBreed[]
+  seasonalRelevance: SeasonalRelevance[]
+  trainingApplications: string[]
+  professionalEndorsement?: string
+  fieldTestingReport?: string
+  videoUrl?: string
+  sizingGuide?: string
+  compatibleProducts?: string[]
+  urgencyLevel?: 'high' | 'medium' | 'low'
+  bulkAvailable?: boolean
+}
+
+export interface ProductSection {
+  title: string
+  description: string
+  products: Product[]
+}
+
+export const products: Product[] = [
+  {
+    id: 'dummy-launcher',
+    name: 'SportDOG Launcher Training Dummy',
+    description: 'Professional-grade training dummy with scent injection port. Perfect for building marking skills and distance retrieves. Canvas construction withstands repeated use.',
+    price: 24.99,
+    imageUrl: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=300&fit=crop',
+    amazonUrl: 'https://amazon.com/SportDOG-Launcher-Training-Dummy',
+    category: 'training-gear',
+    tags: ['marking', 'retrieve', 'training'],
+    featured: true,
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 156,
+    trustSignals: {
+      yogiApproved: true,
+      fieldTested: true,
+      customerStories: 23
+    },
+    trainingLevel: ['started', 'finished', 'professional'],
+    huntingScenarios: ['waterfowl', 'upland', 'general'],
+    breedRecommendations: ['labs', 'goldens', 'chesapeakes', 'all-breeds'],
+    seasonalRelevance: ['year-round', 'training-season'],
+    trainingApplications: ['marking', 'memory', 'distance-retrieves', 'scent-work'],
+    professionalEndorsement: 'Used daily in our advanced training programs',
+    fieldTestingReport: 'Tested with 50+ dogs over 6 months - excellent durability',
+    bulkAvailable: true,
+    urgencyLevel: 'medium'
+  },
+  {
+    id: 'force-fetch-collar',
+    name: 'Dogtra 1900S E-Collar',
+    description: 'Professional training collar for force fetch and advanced obedience. 3/4 mile range with Nick/Constant stimulation. Waterproof design for all conditions.',
+    price: 199.99,
+    originalPrice: 249.99,
+    imageUrl: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=300&fit=crop',
+    amazonUrl: 'https://amazon.com/Dogtra-1900S-Training-Collar',
+    category: 'training-gear',
+    tags: ['e-collar', 'force-fetch', 'obedience'],
+    featured: true,
+    inStock: true,
+    rating: 4.7,
+    reviewCount: 89,
+    trustSignals: {
+      yogiApproved: true,
+      proRecommended: true,
+      fieldTested: true,
+      customerStories: 45
+    },
+    trainingLevel: ['finished', 'professional'],
+    huntingScenarios: ['waterfowl', 'upland', 'general'],
+    breedRecommendations: ['labs', 'goldens', 'chesapeakes', 'springers'],
+    seasonalRelevance: ['year-round'],
+    trainingApplications: ['force-fetch', 'steadiness', 'advanced-obedience', 'collar-conditioning'],
+    professionalEndorsement: 'My go-to collar for force fetch training - reliable and precise',
+    fieldTestingReport: 'Waterproof tested in harsh conditions, excellent range and consistency',
+    sizingGuide: 'Fits neck sizes 5-22 inches. Adjustable strap included.',
+    urgencyLevel: 'high'
+  },
+  {
+    id: 'hunting-vest',
+    name: 'Avery Neoprene Dog Vest',
+    description: 'Insulated neoprene vest for cold water retrieves. Adjustable chest and belly straps with reflective trim. Essential for waterfowl hunting safety.',
+    price: 64.99,
+    imageUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop',
+    amazonUrl: 'https://amazon.com/Avery-Neoprene-Dog-Vest',
+    category: 'hunting-equipment',
+    tags: ['waterfowl', 'vest', 'cold-water'],
+    featured: false,
+    inStock: true,
+    rating: 4.6,
+    reviewCount: 203,
+    trustSignals: {
+      fieldTested: true,
+      customerStories: 31
+    },
+    trainingLevel: ['started', 'finished', 'professional'],
+    huntingScenarios: ['waterfowl', 'duck'],
+    breedRecommendations: ['labs', 'goldens', 'chesapeakes'],
+    seasonalRelevance: ['duck-season'],
+    trainingApplications: ['cold-water-conditioning', 'hypothermia-prevention', 'visibility'],
+    fieldTestingReport: 'Tested in 40°F water - keeps dogs warm and visible',
+    sizingGuide: 'Sizes XS-XXL available. Measure chest circumference for proper fit.',
+    urgencyLevel: 'high'
+  },
+  {
+    id: 'whistle-lanyard',
+    name: 'Acme Thunderer Whistle Set',
+    description: 'Professional dog training whistle with adjustable pitch. Includes lanyard and spare pea. The standard for professional trainers worldwide.',
+    price: 18.99,
+    imageUrl: 'https://images.unsplash.com/photo-1594736797933-d0aa3c8b3628?w=400&h=300&fit=crop',
+    amazonUrl: 'https://amazon.com/Acme-Thunderer-Whistle-Set',
+    category: 'training-gear',
+    tags: ['whistle', 'commands', 'training'],
+    featured: false,
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 324,
+    trustSignals: {
+      yogiApproved: true,
+      proRecommended: true,
+      customerStories: 67
+    },
+    trainingLevel: ['puppy', 'started', 'finished', 'professional'],
+    huntingScenarios: ['waterfowl', 'upland', 'general'],
+    breedRecommendations: ['all-breeds'],
+    seasonalRelevance: ['year-round'],
+    trainingApplications: ['sit-whistle', 'come-whistle', 'directional-casting', 'hunt-commands'],
+    professionalEndorsement: 'Every serious trainer needs this whistle - clarity and consistency',
+    bulkAvailable: true,
+    urgencyLevel: 'low'
+  },
+  {
+    id: 'retriever-treats',
+    name: 'Zuke\'s Training Treats',
+    description: 'High-value training treats perfect for positive reinforcement. Made with real duck and sweet potato. Small size ideal for frequent rewards.',
+    price: 12.99,
+    imageUrl: 'https://images.unsplash.com/photo-1609712729287-58bb8021ca90?w=400&h=300&fit=crop',
+    amazonUrl: 'https://amazon.com/Zukes-Training-Treats-Duck',
+    category: 'dog-supplies',
+    tags: ['treats', 'training', 'rewards'],
+    featured: false,
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 1247,
+    trustSignals: {
+      yogiApproved: true,
+      customerStories: 89
+    },
+    trainingLevel: ['puppy', 'started', 'finished'],
+    huntingScenarios: ['general'],
+    breedRecommendations: ['all-breeds'],
+    seasonalRelevance: ['year-round'],
+    trainingApplications: ['positive-reinforcement', 'recall-training', 'basic-obedience'],
+    professionalEndorsement: 'Perfect size and motivation for training sessions',
+    bulkAvailable: true,
+    urgencyLevel: 'low'
+  },
+  {
+    id: 'training-book',
+    name: 'Total Retriever Training by Hal Higdon',
+    description: 'Comprehensive guide to training hunting dogs from puppy to finished retriever. Step-by-step methods used by professional trainers.',
+    price: 19.99,
+    imageUrl: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=300&fit=crop',
+    amazonUrl: 'https://amazon.com/Total-Retriever-Training-Hal-Higdon',
+    category: 'books-dvds',
+    tags: ['book', 'training-guide', 'education'],
+    featured: true,
+    inStock: true,
+    rating: 4.7,
+    reviewCount: 87,
+    trustSignals: {
+      proRecommended: true,
+      customerStories: 156
+    },
+    trainingLevel: ['puppy', 'started', 'finished', 'professional'],
+    huntingScenarios: ['waterfowl', 'upland', 'general'],
+    breedRecommendations: ['all-breeds'],
+    seasonalRelevance: ['year-round'],
+    trainingApplications: ['foundational-training', 'force-fetch', 'steadiness', 'handling'],
+    professionalEndorsement: 'Essential reading for any serious retriever trainer',
+    urgencyLevel: 'medium'
+  }
+]
+
+export const featuredProducts = products.filter(product => product.featured)
+
+export const productSections: ProductSection[] = [
+  {
+    title: 'Training Essentials',
+    description: 'Core gear every hunting dog trainer needs for building foundational skills.',
+    products: products.filter(product => product.category === 'training-gear')
+  },
+  {
+    title: 'Field & Hunting Gear',
+    description: 'Equipment for real hunting scenarios and field work.',
+    products: products.filter(product => product.category === 'hunting-equipment')
+  },
+  {
+    title: 'Dog Care & Supplies',
+    description: 'Health, nutrition, and care products for working retrievers.',
+    products: products.filter(product => product.category === 'dog-supplies')
+  }
+]
